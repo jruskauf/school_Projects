@@ -1,0 +1,61 @@
+#Establish variables for smooth operations
+SEMESTER=$(cat /usr/local/etc/semester)
+DESIG="unix"
+PROJECT="uka0"
+PUBLIC="/var/public/${SEMESTER}/${DESIG}/${PROJECT}/jruskauf"
+PRJDIR="${HOME}/src/${DESIG}/projects/${PROJECT}"
+
+#Create local project directory
+mkdir -p ${PRJDIR}
+
+#copy project data files
+cp -a ${PUBLIC}/* ${PRJDIR}/
+
+#change to local project directory
+# praise be to Haas for nuggets of wisdom
+cd ${PRJDIR}
+
+#use "file uka0.pptx" to determine what filetype it is.  Since it's a bzip2 file,
+#I can use bzcat to unzip it, and then direct the output into a new file
+bzcat uka0.pptx > uka0
+
+#using file on uka0, i see it's a RAR archive.  We should be able to uncompress it
+#with "unrar e", and then move the datafile back into uka0 to keep the directory
+#tidy.
+unrar e uka0
+mv -f datafile uka0
+
+#upon using "cat uka0", we can see the Xs from pbx1, so we can use "tr -d X" to
+#get rid of those pesky characters again.
+tr -d X < uka0 > temp | mv -f temp uka0
+
+#using "cat uka0, we can see a clear split between the top half and bottom half,
+#so let's split that up so it's easier to work with.
+head -15 uka0 > thalf
+tail -15 uka0 > bhalf
+
+#let's start with thalf.  using cat we can see the letters on the bottom line, and
+#the numerical values described in the README file.  We can split this down the
+#middle using "cut -c", redirecting each half into it's own file, pasting it back
+#together, and orienting it correctly with rev and tac.  We remove the temp file 
+#as well to keep everything tidy.
+cut -c 1-39 thalf > thalf1 | cut -c 40-77 thalf > thalf2 
+paste -d "" thalf2 thalf1 > thalf 
+rev thalf > temp 
+tac temp > thalf 
+rm -f temp
+
+#And now we go through the same process for bhalf, but the values this time are
+#upside down only, so rev does not need to be included.
+cut -c 1-38 bhalf > bhalf1 | cut -c 39-77 bhalf > bhalf2
+paste -d "" bhalf2 bhalf1 > bhalf 
+tac bhalf > temp 
+mv -f temp bhalf
+
+#Now we can merge the two files into one, and rename it uka0.results
+mv -f thalf uka0
+ paste bhalf >> uka0
+ mv uka0 uka0.results
+
+#now we would md5sum, check the hash, and then submit our file.
+submit unix uka0 uka0.results uka0steps

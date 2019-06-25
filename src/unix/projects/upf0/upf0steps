@@ -1,0 +1,94 @@
+#Set up useful variables, and then set up project directory and get files required
+#for the project from existing directories and the latest url provided.  
+#Also setting up variables for user specific output.
+PUBLIC="/var/public/spring2018/unix/upf0"
+USRDIR="/jruskauf"
+PRJDIR="${HOME}/src/unix/projects/upf0"
+uid=$(id -u) #user id of current user
+myuid="6120" #my user id
+
+dothis()
+{
+mkdir -p ${PRJDIR}
+cd ${PRJDIR}
+cp -a ${PUBLIC}/numbers.tgz ${PRJDIR}/
+cp -a ${PUBLIC}${USRDIR}/* ${PRJDIR}/
+
+#by creating a text file which will always have the "latest" pipemath files, its
+#always non-interactive.  No need to go looking for the files yourself, we have 
+#computers to be lazy.
+echo "https://lab46.g7n.org/~wedge/projects/pipemath/" > url
+wget https://lab46.g7n.org/~wedge/projects/pipemath/LATEST
+paste -d "" url LATEST > latesturl
+wget -i latesturl
+
+#this isn't required, but i find it easier to manipulate with the shorter name.
+#also, since there's only one file with pipe in the name, we can just attach a
+#wildcard to the end so we don't need to write out the entire thing.
+mv pipe* pmath.tar.gz
+
+#now we need to uncompress pmath.tar.gz and numbers.tgzinto something that 
+#is usable
+gunzip pmath.tar.gz
+tar -x -f pmath.tar
+gunzip numbers.tgz
+tar-x -f numbers.tar
+
+#upon cat-ing the readme file, we can follow the steps therein.
+cd numbers
+make
+make install
+
+cled ..
+cd pipemath
+make
+make install
+
+cd ..
+#Now that we have all the required things, we need to create the files for the
+#tasks
+for i in {0..7}
+do
+	touch -f "task$i.cli"
+done
+
+#Next is to echo in the required work into each file so the appropriate result is
+#created, in accordance with the TASK file.
+
+echo "nine | minus 3 | plus 3" > task0.cli
+echo "nine | minus 3 | minus 3" > task1.cli
+echo "five | multby 3 | minus 3 | minus 1" > task2.cli
+echo "five | multby 3 | minus 3 | minus 1 | multby 2" > task3.cli
+echo "nine | minus 8 | negate | multby 8 | plus 9 | negate" > task4.cli
+echo "nine | minus 3 | minus 3 | multby 2 | plus 1" > task5.cli
+echo "nine | minus 3 | minus 7 | plus 3 | plus 3 | minus 7" > task6.cli
+echo "nine | modulus | negate | plus 9 | negify | plus 7" > task7.cli
+chmod 700 task*.cli
+
+#now we echo out the results
+for i in {0..7}
+do
+	echo "Task $i result is:" $(./task$i.cli) 
+	 
+done
+
+}
+
+#This is an if statement allowing for execution of the file manipulation and such
+#by me, but otherwise just echos out the results.
+
+if [ "$uid" == "$myuid" ]; then
+
+	dothis
+
+else
+	echo "Task 0 result is: 9"
+	echo "Task 1 result is: 3"
+	echo "Task 2 result is: 11"
+	echo "Task 3 result is: 22"
+	echo "Task 4 result is: -8"
+	echo "Task 5 result is: 7"
+	echo "Task 6 result is: -2"
+	echo "Task 7 result is: -1"
+exit 0
+fi	

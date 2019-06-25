@@ -1,0 +1,64 @@
+#As usual, login to lab46, so we can get started on this adventure
+#After logging in, let's go make a clean project directory
+
+cd ~/src$/Projects
+mkdir pbx1
+
+#Now let's copy the project files into the new directory, but first we'll head
+#to the public directory.
+
+cd /var/public/spring2018/UNIX/pbx1/jruskauf
+cp pbx1.ogg ~/src/Projects/pbx1
+
+#Now that i have a copy, i can now begin to work on solving this puzzlebox
+#The copy appears to be a bzip2 compression, so first off i need to uncompress it
+#and direct the output into a clean file.
+
+touch pbx1; bzcat pbx1.ogg >> pbx1
+
+#huh, this file appears to be an archive.  Lets fix that up.
+
+ar x pbx1; mv datafile pbx1
+y
+
+#Geez, there's a lot of Xs, lets get rid of them
+
+touch temp; tr -d X < pbx1 > temp
+
+#Looks like we have the vowels AEIOU, but the top half is mixed up a bit,
+#and the bottom half looks like it needs to be on the top. Let's try and fix this.
+#First, let's isolate the top half with "head -n", which gives line input
+
+touch top; head -n 14 pbx1 > top
+
+#Let's do the same for the bottom half
+
+touch bottom; tail -n 13 pbx1 > bottom
+
+#The top file seems to be wrong, the octal values are on the inside.  let's split
+#them up a bit.
+
+touch topright; cut -c 1-29 top > topright
+touch topleft; cut -c 1-29 top > topright
+
+#And now let's paste them together and put them back into the "top" file
+#The -d "" will make it so that there is no tab between the pasted text
+#Pasting it into bottom will now give us a full picture, but not completed.
+
+paste -d "" topleft topright >> bottom
+cp bottom pbx1
+y
+
+#Now that we have a full picture back in pbx1, it doesn't look quite right. 
+# The octal values look like they've been flipped on both the x and y axis
+#Let's undo this with tac and rev
+
+touch temp; tac pbx1 > temp
+cat temp > pbx1
+y
+
+#Now that we have the pretty spiral with all the octal values oriented correctly
+#in their counterclockwise format, we need to submit the files and push them to
+#the repository.
+
+

@@ -1,0 +1,104 @@
+cd ~/src/Projects/
+mkdir adm0
+cd \
+cd /var/public/spring2018/UNIX/adm0
+cd jruskauf
+ls -1
+cp adm0a.zip ~/src/Projects/adm0
+cp adm0b.tar.gz
+cp adm0c.tar.bz2
+cp adm0d.tar.xz
+cd ~/src/Projects/adm0
+ls -1
+unzip adm0a.zip
+cat out4
+cat 7
+uudecode out4
+cat 4
+gunzip adm0b.tar.gz
+tar -x -f adm0b.tar
+cat out1
+touch temp
+tac out1 >> temp
+#it too me a second glance to realize this file needed to be "tac"-ed
+touch 1
+mv temp 1
+ls -1
+cat out2
+rm temp
+y
+touch temp
+rev out2 >> temp
+#Forgot for a bit that >> helps to path the output where you want it, and it needs to path to an empty file as well, hence the "temp" files.  Whatever is added by >> stacks with what's already in the file, so rev out2 >> out2 doesn't work cleanly.
+cat temp
+touch 2
+mv temp 2
+ls -1
+bunzip2 adm0c.tar.bz2
+tar -x -f adm0c.tar
+ls -1
+cat out52
+uudecode out52
+ls -1
+cat 5
+touch temp
+tac 5 >> temp
+cat temp
+mv temp 5
+y
+cat 5
+rm temp
+y
+cat out62
+uudecode out62
+ls -1
+cat 6
+touch temp
+rev 6 >> temp
+cat temp
+mv temp 6
+y
+cat 6
+ls -1
+unxz adm0d.tar.xz
+tar -x -f adm0d.tar
+ls -1
+unzip 3.zip
+cat 3
+ls -1
+mkdir adm0e
+mv 1 adm0e
+mv 2 adm0e
+mv 3 adm0e
+mv 4 adm0e
+mv 5 adm0e
+mv 6 adm0e
+mv 7 adm0e
+mv 8 adm0e
+cd adm0e
+ls -S -1
+touch a
+touch b
+touch c
+touch d
+touch e
+touch f
+touch g
+touch h
+mv 1 a
+mv 2 b
+mv 3 c
+mv 4 d
+mv 5 e
+mv 6 f
+mv 7 g
+mv 8 h
+#I might have been able to shorten this up with piping, but my brain wasn't willing to bend that way today.
+pchk unix adm0
+cd ..
+tar cfv adm0e.tar adm0e
+gzip adm0e.tar
+touch adm0steps
+pico adm0steps
+submit unix adm0 adm0e.tar.gz adm0steps
+

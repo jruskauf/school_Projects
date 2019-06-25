@@ -1,0 +1,20 @@
+#include /bin/bash
+
+#Passphrase: Feb201999
+#Deploy ssh-agent session and add the authorized_keys i have
+eval `ssh-agent`
+ssh-add 
+
+
+#For every Pi-machine listed, ssh into it and then grab the necessary data.
+#Then, print out the grabbed and processed data into an easily readable format
+#which will be put into seperate files.
+for pies in {48..56}
+do
+	ssh 10.80.2.$pies "printf '%s\n' 10.80.2.$pies > pi.$pies.info; printf 'CPU speed(MHz): ' >> pi.${pies}.info; lscpu | egrep -e 'CPU max MHz:' | tr -d ' ' | cut -d ':' -f2 >> pi.$pies.info; printf 'Memory: ' >> pi.$pies.info; cat /proc/meminfo | egrep -e 'MemTotal' | tr -d ' ' | cut -d ':' -f2 >> pi.${pies}.info; printf 'Storage(/): ' >> pi.${pies}.info; df -H | egrep -e '/dev/root' | cut -b23-27 >> pi.$pies.info; printf 'Uptime(Minutes): ' >> pi.${pies}.info; cat /proc/uptime | cut -d ' ' -f1 | cut -d '.' -f1 >> pi.${pies}.info"
+done
+
+mv ~/pi.*.info ~/src/unix/projects/eoce/0x3
+
+exit 0
+

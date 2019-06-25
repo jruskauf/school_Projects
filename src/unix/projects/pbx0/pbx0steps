@@ -1,0 +1,955 @@
+lab46:~$ cd var
+-bash: cd: var: No such file or directory
+lab46:~$ cd /var/public/spring2018/UNIX
+lab46:/var/public/spring2018/UNIX$ ls
+adm0  examples  pbx0  pbx1  pbx2
+lab46:/var/public/spring2018/UNIX$ cd pbx0
+lab46:/var/public/spring2018/UNIX/pbx0$ cd jruskauf
+lab46:/var/public/spring2018/UNIX/pbx0/jruskauf$ cp start.html start2.html
+cp: cannot create regular file 'start2.html': Permission denied
+lab46:/var/public/spring2018/UNIX/pbx0/jruskauf$ lab46:/var/public/spring2018/UNIX/pbx0/jruskauf$ cp start.html start2.html
+-bash: lab46:/var/public/spring2018/UNIX/pbx0/jruskauf$: No such file or directory
+lab46:/var/public/spring2018/UNIX/pbx0/jruskauf$ cp: cannot create regular file 'start2.html': Permission denied
+-bash: cp:: command not found
+lab46:/var/public/spring2018/UNIX/pbx0/jruskauf$ cp start.html ~/unix/Projects/pbx0
+cp: cannot create regular file '/home/jruskauf/unix/Projects/pbx0': No such file or directory
+lab46:/var/public/spring2018/UNIX/pbx0/jruskauf$ chmod 700 start.html
+chmod: changing permissions of 'start.html': Operation not permitted
+lab46:/var/public/spring2018/UNIX/pbx0/jruskauf$ cd\
+>
+lab46:~$ cd Projects
+-bash: cd: Projects: No such file or directory
+lab46:~$ cd unix
+-bash: cd: unix: No such file or directory
+lab46:~$ ls
+Desktop     centimeter.cpp        closet                convertProgram.cpp  file2             game      info      measureshifter      public_html        src
+SHELL       centimeterscript      conversionTypescript  cs1380s18           firstProgram      game.cpp  info.txt  measureshifter.cpp  secondProgram
+centimeter  centimetertypescript  convert.cpp.save      file                firstProgram.cpp  hello     mail      motd                secondProgram.cpp
+lab46:~$ cd src
+lab46:~/src$ cd Projects
+lab46:~/src/Projects$ cd pbx0
+lab46:~/src/Projects/pbx0$ cp /var/public/spring2018/UNIX/pbx0/jruskauf$
+cp: missing destination file operand after '/var/public/spring2018/UNIX/pbx0/jruskauf$'
+Try 'cp --help' for more information.
+lab46:~/src/Projects/pbx0$ cp
+cp: missing file operand
+Try 'cp --help' for more information.
+lab46:~/src/Projects/pbx0$ cp /var/public/spring2018/UNIX/pbx0/jruskauf$'
+> Try 'cp --help' for more information.
+> lab46:~/src/Projects/pbx0$ cp
+> cp: missing file operand
+> Try 'cp --help' for more information.
+> lab46:~/src/Projects/pbx0$ cp
+>
+>
+> -bash: unexpected EOF while looking for matching `''
+-bash: syntax error: unexpected end of file
+lab46:~/src/Projects/pbx0$ cp /var/public/spring2018/UNIX/pbx0/jruskauf$ .
+cp: cannot stat '/var/public/spring2018/UNIX/pbx0/jruskauf$': No such file or directory
+lab46:~/src/Projects/pbx0$ cd \
+>
+lab46:~$ cd /var/public/spring2018/UNIX/pbx0/jruskauf$
+-bash: cd: /var/public/spring2018/UNIX/pbx0/jruskauf$: No such file or directory
+lab46:~$ cd /var/public/spring2018/UNIX/pbx0/jruskauf
+lab46:/var/public/spring2018/UNIX/pbx0/jruskauf$ cp /var/public/spring2018/UNIX/pbx0/jruskauf ~/src/Projects/pbx0
+cp: -r not specified; omitting directory '/var/public/spring2018/UNIX/pbx0/jruskauf'
+lab46:/var/public/spring2018/UNIX/pbx0/jruskauf$ cp -r /var/public/spring2018/UNIX/pbx0/jruskauf ~/src/Projects/pbx0
+lab46:/var/public/spring2018/UNIX/pbx0/jruskauf$ cd \
+>
+lab46:~$ cd ~/src/Projects/pbx0
+lab46:~/src/Projects/pbx0$ ls
+jruskauf
+lab46:~/src/Projects/pbx0$ cd jruskauf
+lab46:~/src/Projects/pbx0/jruskauf$ ls
+start.html
+lab46:~/src/Projects/pbx0/jruskauf$ mv start.html pbx0
+lab46:~/src/Projects/pbx0/jruskauf$ ls
+pbx0
+lab46:~/src/Projects/pbx0/jruskauf$ cd \
+>
+lab46:~$ cp -r /var/public/spring2018/UNIX/pbx0/jruskauf/start.html ~/src/Projects/pbx0
+lab46:~$ cd ~/src/Projects/pbx0
+lab46:~/src/Projects/pbx0$ ls
+jruskauf  start.html
+lab46:~/src/Projects/pbx0$ rmdir jruskauf
+rmdir: failed to remove 'jruskauf': Directory not empty
+lab46:~/src/Projects/pbx0$ rmdir -r jruskauf
+rmdir: invalid option -- 'r'
+Try 'rmdir --help' for more information.
+lab46:~/src/Projects/pbx0$ man rmdir
+lab46:~/src/Projects/pbx0$ cd jruskauf
+lab46:~/src/Projects/pbx0/jruskauf$ rm pbx0
+rm: remove regular file 'pbx0'? y
+lab46:~/src/Projects/pbx0/jruskauf$ cd ..
+lab46:~/src/Projects/pbx0$ rmdir jruskauf
+lab46:~/src/Projects/pbx0$ ls
+start.html
+lab46:~/src/Projects/pbx0$ file start.html
+start.html: gzip compressed data, was "lions.in.kenya", last modified: Thu Jan 18 19:28:37 2018, max compression, from Unix
+lab46:~/src/Projects/pbx0$ man gzip
+lab46:~/src/Projects/pbx0$ zcat start.html
+begin 600 not.in.norway
+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
+$]YJS"```
+`
+end
+lab46:~/src/Projects/pbx0$ ls -l
+total 4
+-rw------- 1 jruskauf lab46 1600 Jan 30 20:58 start.html
+lab46:~/src/Projects/pbx0$ file start.html
+start.html: gzip compressed data, was "lions.in.kenya", last modified: Thu Jan 18 19:28:37 2018, max compression, from Unix
+lab46:~/src/Projects/pbx0$ ls
+start.html
+lab46:~/src/Projects/pbx0$ zcat start.html
+begin 600 not.in.norway
+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
+$]YJS"```
+`
+end
+lab46:~/src/Projects/pbx0$ man gzip
+lab46:~/src/Projects/pbx0$ gunzip -d start.html
+gzip: start.html: unknown suffix -- ignored
+lab46:~/src/Projects/pbx0$ man gzip
+lab46:~/src/Projects/pbx0$ zcat -d start.html
+begin 600 not.in.norway
+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
+$]YJS"```
+`
+end
+lab46:~/src/Projects/pbx0$ ls
+start.html
+lab46:~/src/Projects/pbx0$ file start.html
+start.html: gzip compressed data, was "lions.in.kenya", last modified: Thu Jan 18 19:28:37 2018, max compression, from Unix
+lab46:~/src/Projects/pbx0$ touch temp
+lab46:~/src/Projects/pbx0$ zcat start.html >> temp
+lab46:~/src/Projects/pbx0$ ls
+start.html  temp
+lab46:~/src/Projects/pbx0$ cat temp
+begin 600 not.in.norway
+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
+$]YJS"```
+`
+end
+lab46:~/src/Projects/pbx0$ file temp
+temp: uuencoded or xxencoded, ASCII text
+lab46:~/src/Projects/pbx0$ touch temp2
+lab46:~/src/Projects/pbx0$ temp uudecode >> temp2
+-bash: temp: command not found
+lab46:~/src/Projects/pbx0$ uudecode temp >> temp2
+lab46:~/src/Projects/pbx0$ ls
+not.in.norway  start.html  temp  temp2
+lab46:~/src/Projects/pbx0$ file temp2
+temp2: empty
+lab46:~/src/Projects/pbx0$ cat not.in.norway
+F▒4▒▒C0▒G▒▒!▒)▒▒▒F▒MCCLM6▒4▒▒S"#AOD2▒6Ph􍩓M=L!▒▒h44▒▒▒h▒▒▒OI▒<M1#4▒▒
+ܬXMZN▒66k▒.▒▒ߔ▒▒%▒g▒▒▒u▒RI▒"▒▒▒▒0M▒▒▒▒3J#,▒a ▒▒▒▒       K▒_▒Z?a▒▒▒!m▒▒0▒▒6(▒▒▒▒S▒1▒▒jϙ#~▒▒K▒b▒▒▒
+                                                                                                C▒b▒@▒▒▒ٿ▒▒▒▒=c▒&Zu▒pUAs▒▒b▒▒▒N▒QȂ ▒^Q
+&[▒E.p▒▒▒▒▒▒▒▒)▒▒▒▒&▒▒▒$▒▒6▒g▒{pb▒Ȱj+tcp
+▒q▒u▒"▒F▒▒▒3▒▒:F▒▒ǋ     ▒@y3▒(jʃ▒!▒▒▒▒~P▒▒▒▒▒M▒Ey▒▒▒▒▒▒Hi▒"=    E ▒E▒(▒!▒▒q▒▒&▒ⱚ▒▒▒*▒ѱ▒L▒PQr▒dۼL▒▒▒T▒▒▒h▒F▒▒q▒▒a▒!ҒF    ▒z▒▒,▒7▒$▒▒ڍ▒▒&▒8▒R`▒ ▒▒c;s[.▒lFrL▒m▒▒▒M▒▒Z&▒HS▒
+▒D▒▒`K▒▒={n     ▒
+▒V▒▒▒*▒J7nN▒Kĳ)L▒Z▒<]▒▒xu_▒▒yeRD▒▒▒5W▒N/▒▒p▒▒m▒▒80▒u0▒\D▒h▒ c▒▒"▒       v▒▒-֡▒▒▒GL▒8▒▒<$▒▒▒y▒
+▒tdS▒▒{N-LU▒▒▒▒p&▒W
+$▒qȥ▒9z▒v+6'FR`▒@Bu▒dLa▒▒r▒Fp#^^Jٺ▒▒;▒▒▒؉y▒t▒▒]J▒▒i▒▒I`6▒d▒▒.Ro▒▒▒E;gh :▒Ἦ▒k]f;▒\ؓb▒▒▒?▒▒n▒,k&m0▒▒y▒▒&)$a▒0▒UFj▒^Y ▒▒m▒▒▒uT▒0%89▒H[▒▒▒▒▒▒Dy▒Þ:▒B▒▒ 2▒Nn▒▒▒▒,▒▒#l▒.)▒1▒.Y▒▒4L=▒▒▒#xL▒▒▒38▒/▒R▒T D)&▒▒▒▒i▒▒/▒
+                                   ▒#i▒{W▒@▒&{▒▒y▒▒)▒▒  eS0▒MO9▒)▒|"p&▒$▒▒▒4▒▒8▒▒l▒;1oM)%▒      ▒▒J▒▒▒8!�#▒Q񋡎2E▒▒0Z▒ڎ▒▒▒▒y▒▒F▒Jc<kDy▒K@▒р%g▒٫?▒▒▒p▒9▒▒▒▒▒o▒▒▒.▒▒ݣ▒▒▒%9▒▒▒`▒g}(,K▒▒GD▒t▒1▒Hp▒▒t\+▒▒▒▒$▒▒|▒▒P▒\▒'N▒J6Jo▒;▒|▒5▒ ▒▒`▒▒▒]▒▒B@lab46:~/src/Projects/pbx0$ PuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTY
+-bash: PuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTY: command not found
+lab46:~/src/Projects/pbx0$ file not.in.norway
+not.in.norway: bzip2 compressed data, block size = 900k
+lab46:~/src/Projects/pbx0$ rm temp2
+rm: remove regular empty file 'temp2'? y
+lab46:~/src/Projects/pbx0$ bunzip2 not.in.norway
+bunzip2: Can't guess original name for not.in.norway -- using not.in.norway.out
+lab46:~/src/Projects/pbx0$ man bzip2
+lab46:~/src/Projects/pbx0$ touch temp2
+lab46:~/src/Projects/pbx0$ bzcat not.in.norway >> temp2
+bzcat: Can't open input file not.in.norway: No such file or directory.
+lab46:~/src/Projects/pbx0$ ls
+not.in.norway.out  start.html  temp  temp2
+lab46:~/src/Projects/pbx0$ file not.in.norway.out
+not.in.norway.out: POSIX tar archive (GNU)
+lab46:~/src/Projects/pbx0$ man tar
+lab46:~/src/Projects/pbx0$ tar -x not.in.norway.out
+tar: Refusing to read archive contents from terminal (missing -f option?)
+tar: Error is not recoverable: exiting now
+lab46:~/src/Projects/pbx0$ tar -f -x not.in.norway.out
+tar: You must specify one of the '-Acdtrux', '--delete' or '--test-label' options
+Try 'tar --help' or 'tar --usage' for more information.
+lab46:~/src/Projects/pbx0$ tar -x -f not.in.norway.out
+lab46:~/src/Projects/pbx0$ ls
+canyon.mid  not.in.norway.out  sol.exe  start.html  subnet.pka  temp  temp2
+lab46:~/src/Projects/pbx0$ cat canyon.mid
+P▒s2L▒▒▒R▒▒
+           data.file.1UT        e▒`Ze▒`Zux
+▒▒_▒&{▒d▒vf▒t▒r)▒S▒L▒r▒=▒                 ▒▒▒▒▒▒0D▒▒    ▒b"▒b▒▒݃▒▒▒lc▒B  K
+bz▒
+▒▒l▒{▒▒ӀUL▒
+           m[▒.▒P▒\l▒+▒▒▒ ▒▒Yզ▒1▒▒{▒▒@oK:k\▒/F▒3.f▒:▒3w▒▒▒▒.▒Xj▒,hP`r▒ ▒▒▒▒T▒ߚ
+
+▒jyY▒0W)>P▒s2L▒▒▒R▒▒
+                    ▒data.file.1UTe▒`Zux
+                                        ▒▒PKQ▒lab46:~/src/Projects/pbx0$ PuTTYPuTTYPuTTY
+-bash: PuTTYPuTTYPuTTY: command not found
+lab46:~/src/Projects/pbx0$ ls
+canyon.mid  not.in.norway.out  sol.exe  start.html  subnet.pka  temp  temp2
+lab46:~/src/Projects/pbx0$ file canyon.mid
+canyon.mid: Zip archive data, at least v2.0 to extract
+lab46:~/src/Projects/pbx0$ file sol.exe
+sol.exe: cpio archive
+lab46:~/src/Projects/pbx0$ file subnet.pka
+subnet.pka: uuencoded or xxencoded, ASCII text
+lab46:~/src/Projects/pbx0$ unzip canyon.mid
+Archive:  canyon.mid
+  inflating: data.file.1
+lab46:~/src/Projects/pbx0$ cat temp2
+lab46:~/src/Projects/pbx0$ uudecode subnet.pka
+lab46:~/src/Projects/pbx0$ ls
+canyon.mid  data.file.0  data.file.1  not.in.norway.out  sol.exe  start.html  subnet.pka  temp  temp2
+lab46:~/src/Projects/pbx0$ cat subnet.pka
+begin 0 data.file.0
+M-"`@(%1O(&9I;FES:"P@>6]U(&UU<W0@<&5R9F]R;2!T:&5S92!T=V\@861D
+M:71I;VYA;"!S=&5P<RP@=VAI8V@@=&%K92!T:&4*,34@(`HR,R`@+2TM+2TM
+M+2T@('EO=7)S96QF+B!4;R!D;R!T:&%T+"!R=6X@=&AE(&9O;&QO=VEN9R!A
+M="!T:&4@;&%B-#8@<')O;7!T.@HR,"`@"C$Q("`*-B`@"C$Y("`@("`@("!C
+M=7)R96YT(&1I<F5C=&]R>2!A<R!Y;W4@<G5N('1H92!C;VUM86YD+@HQ-"`@
+M+2TM+2TM+2T@($IU<W0@<G5N('1H92!F;VQL;W=I;F<@=&\@<&5R9F]R;2!T
+M:&%T(&%C=&EO;CH*-2`@(&9O<FT@;V8@8V]M;6%N9"UL:6YE<RX@4&QE87-E
+M(&)E('-U<F4@=&\@='EP92!T:&5M(&5X86-T;'D@87,@=W)I='1E;B$*,B`@
+M($-O;F=R871U;&%T:6]N<R$@66]U('5N<F%V96QL960@=&AE('!U>GIL92!B
+$;W@A"@``
+`
+end
+lab46:~/src/Projects/pbx0$ uudecode subnet.pka
+uudecode fatal error:
+fserr 13 (Permission denied) performing 'freopen' on data.file.0
+lab46:~/src/Projects/pbx0$ ls
+canyon.mid  data.file.0  data.file.1  not.in.norway.out  sol.exe  start.html  subnet.pka  temp  temp2
+lab46:~/src/Projects/pbx0$ man cpio
+lab46:~/src/Projects/pbx0$ man cpio
+lab46:~/src/Projects/pbx0$ cpio -i sol.exe
+
+
+Found end of tape.  To continue, type device/file name when ready.
+
+lab46:~/src/Projects/pbx0$ ls
+canyon.mid  data.file.0  data.file.1  not.in.norway.out  sol.exe  start.html  subnet.pka  temp  temp2
+lab46:~/src/Projects/pbx0$ logout
+
+#end of session 1.  Found that checking file regularly basically gave you the next set of instructions for what you needed to do, and what commands you need to look at.  Might not use temp files in next session, might rename them if they aren’t really “temporary”.  Need to find out how to unpack sol.exe with cpio, will ask around and look more into it until next session.
+
+lab46:~$ cd ~/src/Projects/pbx0
+lab46:~/src/Projects/pbx0$ ls
+canyon.mid  data.file.0  data.file.1  not.in.norway.out  sol.exe  start.html  subnet.pka  temp  temp2
+lab46:~/src/Projects/pbx0$ file canyon.mid
+canyon.mid: Zip archive data, at least v2.0 to extract
+lab46:~/src/Projects/pbx0$ file data.fil.0
+data.fil.0: cannot open `data.fil.0' (No such file or directory)
+lab46:~/src/Projects/pbx0$ file data.file.0
+data.file.0: regular file, no read permission
+lab46:~/src/Projects/pbx0$ file data.file.1
+data.file.1: ASCII text
+lab46:~/src/Projects/pbx0$ file sol.exe
+sol.exe: cpio archive
+lab46:~/src/Projects/pbx0$ man cpio
+lab46:~/src/Projects/pbx0$ cpio -i --to-stdout sol.exe
+
+
+Found end of tape.  To continue, type device/file name when ready.
+
+lab46:~/src/Projects/pbx0$ man cpio
+lab46:~/src/Projects/pbx0$ cpio -idv sol.exe
+
+
+
+Found end of tape.  To continue, type device/file name when ready.
+
+lab46:~/src/Projects/pbx0$ ls
+canyon.mid  data.file.0  data.file.1  not.in.norway.out  sol.exe  start.html  subnet.pka  temp  temp2
+lab46:~/src/Projects/pbx0$ cpio -idv sol.exe >> temp2
+
+Found end of tape.  To continue, type device/file name when ready.
+
+lab46:~/src/Projects/pbx0$ ls
+canyon.mid  data.file.0  data.file.1  not.in.norway.out  sol.exe  start.html  subnet.pka  temp  temp2
+lab46:~/src/Projects/pbx0$ cat temp2
+lab46:~/src/Projects/pbx0$ pico temp2
+lab46:~/src/Projects/pbx0$ cat sol.exe
+▒~*▒▒▒▒`Ze▒
+▒data.file.2saZllewZsaZrotcurtsniZruoyZotZstnetnocZs'elifZsihtZliamEZ:2ZnoitcAZZ22
+Z.lootZ"timbus"ZehtZgnisuZselifZruoyZtimbuSZ:1ZnoitcAZZ31
+,"stluser"ZelifZdelbmarcsnuZsihtZdemanZevahZtsumZuoyZ,deecorpZotZredroZnIZZZ7
+ZZ71
+ZZ42
+nal.enoybffo@}RESU{$ZegdewZ"]xobelzzupZ:XINU["Zs-ZliamZ|ZstluserZtacZ$ZZZZ52
+foZHTOBZodZtsumZuoyZETON(ZspetsZowtZgniwollofZehtZodZnacZuoyZhcihwZretfaZZZ8
+ZZ62
+-------------------------------------------------------------------------ZZ82
+▒q
+  TRAILER!!!lab46:~/src/Projects/pbx0$
+lab46:~/src/Projects/pbx0$ file sol.exe
+sol.exe: cpio archive
+lab46:~/src/Projects/pbx0$ sol.exe
+-bash: sol.exe: command not found
+lab46:~/src/Projects/pbx0$ man execute
+No manual entry for execute
+lab46:~/src/Projects/pbx0$ man ex
+lab46:~/src/Projects/pbx0$ man exe
+No manual entry for exe
+lab46:~/src/Projects/pbx0$ cpio -iv < sol.exe
+data.file.2
+2 blocks
+lab46:~/src/Projects/pbx0$ ls
+canyon.mid  data.file.0  data.file.1  data.file.2  not.in.norway.out  sol.exe  start.html  subnet.pka  temp  temp2
+lab46:~/src/Projects/pbx0$ rm temp temp2 subnet.pka canyon.mid not.in.norway.out
+rm: remove regular file 'temp'? y
+rm: remove regular empty file 'temp2'? y
+rm: remove regular file 'subnet.pka'? y
+rm: remove regular file 'canyon.mid'? y
+rm: remove regular file 'not.in.norway.out'? y
+lab46:~/src/Projects/pbx0$ y
+-bash: y: command not found
+lab46:~/src/Projects/pbx0$ ls
+data.file.0  data.file.1  data.file.2  sol.exe  start.html
+lab46:~/src/Projects/pbx0$ rm sol.exe
+rm: remove regular file 'sol.exe'? y
+lab46:~/src/Projects/pbx0$ file data.file.0
+data.file.0: regular file, no read permission
+lab46:~/src/Projects/pbx0$ data.file.1
+-bash: data.file.1: command not found
+lab46:~/src/Projects/pbx0$ file data.file.2
+data.file.2: ASCII text
+lab46:~/src/Projects/pbx0$ file data.file.1
+data.file.1: ASCII text
+lab46:~/src/Projects/pbx0$ cat data.file.0
+cat: data.file.0: Permission denied
+lab46:~/src/Projects/pbx0$ chmod 777 data.file.0
+lab46:~/src/Projects/pbx0$ cat data.file.0
+4   To finish, you must perform these two additional steps, which take the
+15
+23  --------  yourself. To do that, run the following at the lab46 prompt:
+20
+11
+6
+19        current directory as you run the command.
+14  --------  Just run the following to perform that action:
+5   form of command-lines. Please be sure to type them exactly as written!
+2   Congratulations! You unravelled the puzzle box!
+lab46:~/src/Projects/pbx0$ cat data.file.1
+-------------------------------------------------------------------------  21
+  3
+  01
+:)spets eseht   9
+spets0xbp stluser 0xbp xinu timbus $    61
+  92
+-------------------------------------------------------------------------  12
+-------------------------------------------------------------------------   1
+.liam-e siht fo ypoc a eviecer dluohs uoy ,lufsseccus fI :ETON  72
+eht ni era selif "spets0xbp" dna "stluser" ruoy semussa sihT :ETON  81
+lab46:~/src/Projects/pbx0$ cat data.file.2
+saZllewZsaZrotcurtsniZruoyZotZstnetnocZs'elifZsihtZliamEZ:2ZnoitcAZZ22
+Z.lootZ"timbus"ZehtZgnisuZselifZruoyZtimbuSZ:1ZnoitcAZZ31
+,"stluser"ZelifZdelbmarcsnuZsihtZdemanZevahZtsumZuoyZ,deecorpZotZredroZnIZZZ7
+ZZ71
+ZZ42
+nal.enoybffo@}RESU{$ZegdewZ"]xobelzzupZ:XINU["Zs-ZliamZ|ZstluserZtacZ$ZZZZ52
+foZHTOBZodZtsumZuoyZETON(ZspetsZowtZgniwollofZehtZodZnacZuoyZhcihwZretfaZZZ8
+ZZ62
+-------------------------------------------------------------------------ZZ82
+lab46:~/src/Projects/pbx0$ uudecode data.file.2
+uudecode fatal error:
+data.file.2: Invalid or missing 'begin' line
+lab46:~/src/Projects/pbx0$ ls
+data.file.0  data.file.1  data.file.2  start.html
+lab46:~/src/Projects/pbx0$ file data.file.2
+data.file.2: ASCII text
+lab46:~/src/Projects/pbx0$ cat data.file.2
+saZllewZsaZrotcurtsniZruoyZotZstnetnocZs'elifZsihtZliamEZ:2ZnoitcAZZ22
+Z.lootZ"timbus"ZehtZgnisuZselifZruoyZtimbuSZ:1ZnoitcAZZ31
+,"stluser"ZelifZdelbmarcsnuZsihtZdemanZevahZtsumZuoyZ,deecorpZotZredroZnIZZZ7
+ZZ71
+ZZ42
+nal.enoybffo@}RESU{$ZegdewZ"]xobelzzupZ:XINU["Zs-ZliamZ|ZstluserZtacZ$ZZZZ52
+foZHTOBZodZtsumZuoyZETON(ZspetsZowtZgniwollofZehtZodZnacZuoyZhcihwZretfaZZZ8
+ZZ62
+-------------------------------------------------------------------------ZZ82
+lab46:~/src/Projects/pbx0$ rev data.file.2
+22ZZActionZ2:ZEmailZthisZfile'sZcontentsZtoZyourZinstructorZasZwellZas
+13ZZActionZ1:ZSubmitZyourZfilesZusingZtheZ"submit"Ztool.Z
+7ZZZInZorderZtoZproceed,ZyouZmustZhaveZnamedZthisZunscrambledZfileZ"results",
+17ZZ
+24ZZ
+25ZZZZ$ZcatZresultsZ|ZmailZ-sZ"[UNIX:Zpuzzlebox]"ZwedgeZ${USER}@offbyone.lan
+8ZZZafterZwhichZyouZcanZdoZtheZfollowingZtwoZstepsZ(NOTEZyouZmustZdoZBOTHZof
+26ZZ
+28ZZ-------------------------------------------------------------------------
+lab46:~/src/Projects/pbx0$ man tr
+lab46:~/src/Projects/pbx0$ rev data.file.2 | tr z
+tr: missing operand after 'z'
+Two strings must be given when translating.
+Try 'tr --help' for more information.
+lab46:~/src/Projects/pbx0$ man tr
+lab46:~/src/Projects/pbx0$ rev data.file.2 | tr -d z
+22ZZActionZ2:ZEmailZthisZfile'sZcontentsZtoZyourZinstructorZasZwellZas
+13ZZActionZ1:ZSubmitZyourZfilesZusingZtheZ"submit"Ztool.Z
+7ZZZInZorderZtoZproceed,ZyouZmustZhaveZnamedZthisZunscrambledZfileZ"results",
+17ZZ
+24ZZ
+25ZZZZ$ZcatZresultsZ|ZmailZ-sZ"[UNIX:Zpulebox]"ZwedgeZ${USER}@offbyone.lan
+8ZZZafterZwhichZyouZcanZdoZtheZfollowingZtwoZstepsZ(NOTEZyouZmustZdoZBOTHZof
+26ZZ
+28ZZ-------------------------------------------------------------------------
+lab46:~/src/Projects/pbx0$ man tr
+lab46:~/src/Projects/pbx0$ rev data.file.2 | tr -d z
+22ZZActionZ2:ZEmailZthisZfile'sZcontentsZtoZyourZinstructorZasZwellZas
+13ZZActionZ1:ZSubmitZyourZfilesZusingZtheZ"submit"Ztool.Z
+7ZZZInZorderZtoZproceed,ZyouZmustZhaveZnamedZthisZunscrambledZfileZ"results",
+17ZZ
+24ZZ
+25ZZZZ$ZcatZresultsZ|ZmailZ-sZ"[UNIX:Zpulebox]"ZwedgeZ${USER}@offbyone.lan
+8ZZZafterZwhichZyouZcanZdoZtheZfollowingZtwoZstepsZ(NOTEZyouZmustZdoZBOTHZof
+26ZZ
+28ZZ-------------------------------------------------------------------------
+lab46:~/src/Projects/pbx0$ tr -d z << data.file.2
+>
+> -bash: warning: here-document at line 50 delimited by end-of-file (wanted `data.file.2')
+
+lab46:~/src/Projects/pbx0$ ls
+data.file.0  data.file.1  data.file.2  start.html
+lab46:~/src/Projects/pbx0$ cat data.file.2
+saZllewZsaZrotcurtsniZruoyZotZstnetnocZs'elifZsihtZliamEZ:2ZnoitcAZZ22
+Z.lootZ"timbus"ZehtZgnisuZselifZruoyZtimbuSZ:1ZnoitcAZZ31
+,"stluser"ZelifZdelbmarcsnuZsihtZdemanZevahZtsumZuoyZ,deecorpZotZredroZnIZZZ7
+ZZ71
+ZZ42
+nal.enoybffo@}RESU{$ZegdewZ"]xobelzzupZ:XINU["Zs-ZliamZ|ZstluserZtacZ$ZZZZ52
+foZHTOBZodZtsumZuoyZETON(ZspetsZowtZgniwollofZehtZodZnacZuoyZhcihwZretfaZZZ8
+ZZ62
+-------------------------------------------------------------------------ZZ82
+lab46:~/src/Projects/pbx0$ rev data.file.2
+22ZZActionZ2:ZEmailZthisZfile'sZcontentsZtoZyourZinstructorZasZwellZas
+13ZZActionZ1:ZSubmitZyourZfilesZusingZtheZ"submit"Ztool.Z
+7ZZZInZorderZtoZproceed,ZyouZmustZhaveZnamedZthisZunscrambledZfileZ"results",
+17ZZ
+24ZZ
+25ZZZZ$ZcatZresultsZ|ZmailZ-sZ"[UNIX:Zpuzzlebox]"ZwedgeZ${USER}@offbyone.lan
+8ZZZafterZwhichZyouZcanZdoZtheZfollowingZtwoZstepsZ(NOTEZyouZmustZdoZBOTHZof
+26ZZ
+28ZZ-------------------------------------------------------------------------
+lab46:~/src/Projects/pbx0$ man tr
+lab46:~/src/Projects/pbx0$ tr -d z < data.file.2
+saZllewZsaZrotcurtsniZruoyZotZstnetnocZs'elifZsihtZliamEZ:2ZnoitcAZZ22
+Z.lootZ"timbus"ZehtZgnisuZselifZruoyZtimbuSZ:1ZnoitcAZZ31
+,"stluser"ZelifZdelbmarcsnuZsihtZdemanZevahZtsumZuoyZ,deecorpZotZredroZnIZZZ7
+ZZ71
+ZZ42
+nal.enoybffo@}RESU{$ZegdewZ"]xobelupZ:XINU["Zs-ZliamZ|ZstluserZtacZ$ZZZZ52
+foZHTOBZodZtsumZuoyZETON(ZspetsZowtZgniwollofZehtZodZnacZuoyZhcihwZretfaZZZ8
+ZZ62
+-------------------------------------------------------------------------ZZ82
+lab46:~/src/Projects/pbx0$ tr -d Z < data.file.2
+sallewsarotcurtsniruoyotstnetnocs'elifsihtliamE:2noitcA22
+.loot"timbus"ehtgnisuselifruoytimbuS:1noitcA31
+,"stluser"elifdelbmarcsnusihtdemanevahtsumuoy,deecorpotredronI7
+71
+42
+nal.enoybffo@}RESU{$egdew"]xobelzzup:XINU["s-liam|stlusertac$52
+foHTOBodtsumuoyETON(spetsowtgniwollofehtodnacuoyhcihwretfa8
+62
+-------------------------------------------------------------------------82
+lab46:~/src/Projects/pbx0$ rev data.file.2
+22ZZActionZ2:ZEmailZthisZfile'sZcontentsZtoZyourZinstructorZasZwellZas
+13ZZActionZ1:ZSubmitZyourZfilesZusingZtheZ"submit"Ztool.Z
+7ZZZInZorderZtoZproceed,ZyouZmustZhaveZnamedZthisZunscrambledZfileZ"results",
+17ZZ
+24ZZ
+25ZZZZ$ZcatZresultsZ|ZmailZ-sZ"[UNIX:Zpuzzlebox]"ZwedgeZ${USER}@offbyone.lan
+8ZZZafterZwhichZyouZcanZdoZtheZfollowingZtwoZstepsZ(NOTEZyouZmustZdoZBOTHZof
+26ZZ
+28ZZ-------------------------------------------------------------------------
+lab46:~/src/Projects/pbx0$ rev data.file.2 | tr -d Z < data.file.2
+sallewsarotcurtsniruoyotstnetnocs'elifsihtliamE:2noitcA22
+.loot"timbus"ehtgnisuselifruoytimbuS:1noitcA31
+,"stluser"elifdelbmarcsnusihtdemanevahtsumuoy,deecorpotredronI7
+71
+42
+nal.enoybffo@}RESU{$egdew"]xobelzzup:XINU["s-liam|stlusertac$52
+foHTOBodtsumuoyETON(spetsowtgniwollofehtodnacuoyhcihwretfa8
+62
+-------------------------------------------------------------------------82
+lab46:~/src/Projects/pbx0$ tr -d Z < data.file.2 | rev data.file.2
+22ZZActionZ2:ZEmailZthisZfile'sZcontentsZtoZyourZinstructorZasZwellZas
+13ZZActionZ1:ZSubmitZyourZfilesZusingZtheZ"submit"Ztool.Z
+7ZZZInZorderZtoZproceed,ZyouZmustZhaveZnamedZthisZunscrambledZfileZ"results",
+17ZZ
+24ZZ
+25ZZZZ$ZcatZresultsZ|ZmailZ-sZ"[UNIX:Zpuzzlebox]"ZwedgeZ${USER}@offbyone.lan
+8ZZZafterZwhichZyouZcanZdoZtheZfollowingZtwoZstepsZ(NOTEZyouZmustZdoZBOTHZof
+26ZZ
+28ZZ-------------------------------------------------------------------------
+lab46:~/src/Projects/pbx0$ man tr
+lab46:~/src/Projects/pbx0$ tr Z [:space:] < data.file.2
+tr: when translating, the only character classes that may appear in
+string2 are 'upper' and 'lower'
+lab46:~/src/Projects/pbx0$ tr Z [space] < data.file.2
+sa[llew[sa[rotcurtsni[ruoy[ot[stnetnoc[s'elif[siht[liamE[:2[noitcA[[22
+[.loot["timbus"[eht[gnisu[selif[ruoy[timbuS[:1[noitcA[[31
+,"stluser"[elif[delbmarcsnu[siht[deman[evah[tsum[uoy[,deecorp[ot[redro[nI[[[7
+[[71
+[[42
+nal.enoybffo@}RESU{$[egdew["]xobelzzup[:XINU["[s-[liam[|[stluser[tac[$[[[[52
+fo[HTOB[od[tsum[uoy[ETON([spets[owt[gniwollof[eht[od[nac[uoy[hcihw[retfa[[[8
+[[62
+-------------------------------------------------------------------------[[82
+lab46:~/src/Projects/pbx0$ tr Z _ < data.file.2
+sa_llew_sa_rotcurtsni_ruoy_ot_stnetnoc_s'elif_siht_liamE_:2_noitcA__22
+_.loot_"timbus"_eht_gnisu_selif_ruoy_timbuS_:1_noitcA__31
+,"stluser"_elif_delbmarcsnu_siht_deman_evah_tsum_uoy_,deecorp_ot_redro_nI___7
+__71
+__42
+nal.enoybffo@}RESU{$_egdew_"]xobelzzup_:XINU["_s-_liam_|_stluser_tac_$____52
+fo_HTOB_od_tsum_uoy_ETON(_spets_owt_gniwollof_eht_od_nac_uoy_hcihw_retfa___8
+__62
+-------------------------------------------------------------------------__82
+lab46:~/src/Projects/pbx0$ tr -s 'Z' ' ' < data.file.2
+sa llew sa rotcurtsni ruoy ot stnetnoc s'elif siht liamE :2 noitcA 22
+ .loot "timbus" eht gnisu selif ruoy timbuS :1 noitcA 31
+,"stluser" elif delbmarcsnu siht deman evah tsum uoy ,deecorp ot redro nI 7
+ 71
+ 42
+nal.enoybffo@}RESU{$ egdew "]xobelzzup :XINU[" s- liam | stluser tac $ 52
+fo HTOB od tsum uoy ETON( spets owt gniwollof eht od nac uoy hcihw retfa 8
+ 62
+------------------------------------------------------------------------- 82
+lab46:~/src/Projects/pbx0$ tr -s 'Z' ' ' < data.file.2 >> temp2
+lab46:~/src/Projects/pbx0$ cat temp2
+sa llew sa rotcurtsni ruoy ot stnetnoc s'elif siht liamE :2 noitcA 22
+ .loot "timbus" eht gnisu selif ruoy timbuS :1 noitcA 31
+,"stluser" elif delbmarcsnu siht deman evah tsum uoy ,deecorp ot redro nI 7
+ 71
+ 42
+nal.enoybffo@}RESU{$ egdew "]xobelzzup :XINU[" s- liam | stluser tac $ 52
+fo HTOB od tsum uoy ETON( spets owt gniwollof eht od nac uoy hcihw retfa 8
+ 62
+------------------------------------------------------------------------- 82
+lab46:~/src/Projects/pbx0$ rev temp2
+22 Action 2: Email this file's contents to your instructor as well as
+13 Action 1: Submit your files using the "submit" tool.
+7 In order to proceed, you must have named this unscrambled file "results",
+17
+24
+25 $ cat results | mail -s "[UNIX: puzzlebox]" wedge ${USER}@offbyone.lan
+8 after which you can do the following two steps (NOTE you must do BOTH of
+26
+28 -------------------------------------------------------------------------
+lab46:~/src/Projects/pbx0$ touch temp3
+lab46:~/src/Projects/pbx0$ rev temp2 >> temp3
+lab46:~/src/Projects/pbx0$ cat temp3
+22 Action 2: Email this file's contents to your instructor as well as
+13 Action 1: Submit your files using the "submit" tool.
+7 In order to proceed, you must have named this unscrambled file "results",
+17
+24
+25 $ cat results | mail -s "[UNIX: puzzlebox]" wedge ${USER}@offbyone.lan
+8 after which you can do the following two steps (NOTE you must do BOTH of
+26
+28 -------------------------------------------------------------------------
+lab46:~/src/Projects/pbx0$ mv temp3 data.file.2
+mv: overwrite 'data.file.2'? y
+lab46:~/src/Projects/pbx0$ cat data.file.2
+22 Action 2: Email this file's contents to your instructor as well as
+13 Action 1: Submit your files using the "submit" tool.
+7 In order to proceed, you must have named this unscrambled file "results",
+17
+24
+25 $ cat results | mail -s "[UNIX: puzzlebox]" wedge ${USER}@offbyone.lan
+8 after which you can do the following two steps (NOTE you must do BOTH of
+26
+28 -------------------------------------------------------------------------
+lab46:~/src/Projects/pbx0$ cat data.file.0
+4   To finish, you must perform these two additional steps, which take the
+15
+23  --------  yourself. To do that, run the following at the lab46 prompt:
+20
+11
+6
+19        current directory as you run the command.
+14  --------  Just run the following to perform that action:
+5   form of command-lines. Please be sure to type them exactly as written!
+2   Congratulations! You unravelled the puzzle box!
+lab46:~/src/Projects/pbx0$ cat data.file.1
+-------------------------------------------------------------------------  21
+  3
+  01
+:)spets eseht   9
+spets0xbp stluser 0xbp xinu timbus $    61
+  92
+-------------------------------------------------------------------------  12
+-------------------------------------------------------------------------   1
+.liam-e siht fo ypoc a eviecer dluohs uoy ,lufsseccus fI :ETON  72
+eht ni era selif "spets0xbp" dna "stluser" ruoy semussa sihT :ETON  81
+lab46:~/src/Projects/pbx0$ rm temp2
+rm: remove regular file 'temp2'? y
+lab46:~/src/Projects/pbx0$ rm temp3
+rm: cannot remove 'temp3': No such file or directory
+lab46:~/src/Projects/pbx0$ rm temp
+rm: cannot remove 'temp': No such file or directory
+lab46:~/src/Projects/pbx0$ touch temp
+lab46:~/src/Projects/pbx0$ rev data.file.1 >> temp
+lab46:~/src/Projects/pbx0$ cat temp
+12  -------------------------------------------------------------------------
+3
+10
+9   these steps):
+16    $ submit unix pbx0 results pbx0steps
+29
+21  -------------------------------------------------------------------------
+1   -------------------------------------------------------------------------
+27  NOTE: If successful, you should receive a copy of this e-mail.
+18  NOTE: This assumes your "results" and "pbx0steps" files are in the
+lab46:~/src/Projects/pbx0$ mv temp data.file.1
+mv: overwrite 'data.file.1'? y
+lab46:~/src/Projects/pbx0$ cat data.file.1
+12  -------------------------------------------------------------------------
+3
+10
+9   these steps):
+16    $ submit unix pbx0 results pbx0steps
+29
+21  -------------------------------------------------------------------------
+1   -------------------------------------------------------------------------
+27  NOTE: If successful, you should receive a copy of this e-mail.
+18  NOTE: This assumes your "results" and "pbx0steps" files are in the
+lab46:~/src/Projects/pbx0$ man sed
+lab46:~/src/Projects/pbx0$ man tr
+lab46:~/src/Projects/pbx0$ man sort
+lab46:~/src/Projects/pbx0$ ls
+data.file.0  data.file.1  data.file.2  start.html
+lab46:~/src/Projects/pbx0$ touch temp
+lab46:~/src/Projects/pbx0$ sort -h data.file.0 >> temp
+lab46:~/src/Projects/pbx0$ sort -h data.file.1 >> temp
+lab46:~/src/Projects/pbx0$ sort -h data.file.2 >> temp
+lab46:~/src/Projects/pbx0$ cat temp
+2   Congratulations! You unravelled the puzzle box!
+4   To finish, you must perform these two additional steps, which take the
+5   form of command-lines. Please be sure to type them exactly as written!
+6
+11
+14  --------  Just run the following to perform that action:
+15
+19        current directory as you run the command.
+20
+23  --------  yourself. To do that, run the following at the lab46 prompt:
+1   -------------------------------------------------------------------------
+3
+9   these steps):
+10
+12  -------------------------------------------------------------------------
+16    $ submit unix pbx0 results pbx0steps
+18  NOTE: This assumes your "results" and "pbx0steps" files are in the
+21  -------------------------------------------------------------------------
+27  NOTE: If successful, you should receive a copy of this e-mail.
+29
+7 In order to proceed, you must have named this unscrambled file "results",
+8 after which you can do the following two steps (NOTE you must do BOTH of
+13 Action 1: Submit your files using the "submit" tool.
+17
+22 Action 2: Email this file's contents to your instructor as well as
+24
+25 $ cat results | mail -s "[UNIX: puzzlebox]" wedge ${USER}@offbyone.lan
+26
+28 -------------------------------------------------------------------------
+lab46:~/src/Projects/pbx0$ sort -h temp
+1   -------------------------------------------------------------------------
+2   Congratulations! You unravelled the puzzle box!
+3
+4   To finish, you must perform these two additional steps, which take the
+5   form of command-lines. Please be sure to type them exactly as written!
+6
+7 In order to proceed, you must have named this unscrambled file "results",
+8 after which you can do the following two steps (NOTE you must do BOTH of
+9   these steps):
+10
+11
+12  -------------------------------------------------------------------------
+13 Action 1: Submit your files using the "submit" tool.
+14  --------  Just run the following to perform that action:
+15
+16    $ submit unix pbx0 results pbx0steps
+17
+18  NOTE: This assumes your "results" and "pbx0steps" files are in the
+19        current directory as you run the command.
+20
+21  -------------------------------------------------------------------------
+22 Action 2: Email this file's contents to your instructor as well as
+23  --------  yourself. To do that, run the following at the lab46 prompt:
+24
+25 $ cat results | mail -s "[UNIX: puzzlebox]" wedge ${USER}@offbyone.lan
+26
+27  NOTE: If successful, you should receive a copy of this e-mail.
+28 -------------------------------------------------------------------------
+29
+lab46:~/src/Projects/pbx0$ touch results
+lab46:~/src/Projects/pbx0$ mv temp results
+mv: overwrite 'results'? y
+lab46:~/src/Projects/pbx0$ cat results
+2   Congratulations! You unravelled the puzzle box!
+4   To finish, you must perform these two additional steps, which take the
+5   form of command-lines. Please be sure to type them exactly as written!
+6
+11
+14  --------  Just run the following to perform that action:
+15
+19        current directory as you run the command.
+20
+23  --------  yourself. To do that, run the following at the lab46 prompt:
+1   -------------------------------------------------------------------------
+3
+9   these steps):
+10
+12  -------------------------------------------------------------------------
+16    $ submit unix pbx0 results pbx0steps
+18  NOTE: This assumes your "results" and "pbx0steps" files are in the
+21  -------------------------------------------------------------------------
+27  NOTE: If successful, you should receive a copy of this e-mail.
+29
+7 In order to proceed, you must have named this unscrambled file "results",
+8 after which you can do the following two steps (NOTE you must do BOTH of
+13 Action 1: Submit your files using the "submit" tool.
+17
+22 Action 2: Email this file's contents to your instructor as well as
+24
+25 $ cat results | mail -s "[UNIX: puzzlebox]" wedge ${USER}@offbyone.lan
+26
+28 -------------------------------------------------------------------------
+lab46:~/src/Projects/pbx0$ ls
+data.file.0  data.file.1  data.file.2  results  start.html
+lab46:~/src/Projects/pbx0$ cat results
+2   Congratulations! You unravelled the puzzle box!
+4   To finish, you must perform these two additional steps, which take the
+5   form of command-lines. Please be sure to type them exactly as written!
+6
+11
+14  --------  Just run the following to perform that action:
+15
+19        current directory as you run the command.
+20
+23  --------  yourself. To do that, run the following at the lab46 prompt:
+1   -------------------------------------------------------------------------
+3
+9   these steps):
+10
+12  -------------------------------------------------------------------------
+16    $ submit unix pbx0 results pbx0steps
+18  NOTE: This assumes your "results" and "pbx0steps" files are in the
+21  -------------------------------------------------------------------------
+27  NOTE: If successful, you should receive a copy of this e-mail.
+29
+7 In order to proceed, you must have named this unscrambled file "results",
+8 after which you can do the following two steps (NOTE you must do BOTH of
+13 Action 1: Submit your files using the "submit" tool.
+17
+22 Action 2: Email this file's contents to your instructor as well as
+24
+25 $ cat results | mail -s "[UNIX: puzzlebox]" wedge ${USER}@offbyone.lan
+26
+28 -------------------------------------------------------------------------
+lab46:~/src/Projects/pbx0$ touch temp
+lab46:~/src/Projects/pbx0$ sort -h results >> temp
+lab46:~/src/Projects/pbx0$ cat temp
+1   -------------------------------------------------------------------------
+2   Congratulations! You unravelled the puzzle box!
+3
+4   To finish, you must perform these two additional steps, which take the
+5   form of command-lines. Please be sure to type them exactly as written!
+6
+7 In order to proceed, you must have named this unscrambled file "results",
+8 after which you can do the following two steps (NOTE you must do BOTH of
+9   these steps):
+10
+11
+12  -------------------------------------------------------------------------
+13 Action 1: Submit your files using the "submit" tool.
+14  --------  Just run the following to perform that action:
+15
+16    $ submit unix pbx0 results pbx0steps
+17
+18  NOTE: This assumes your "results" and "pbx0steps" files are in the
+19        current directory as you run the command.
+20
+21  -------------------------------------------------------------------------
+22 Action 2: Email this file's contents to your instructor as well as
+23  --------  yourself. To do that, run the following at the lab46 prompt:
+24
+25 $ cat results | mail -s "[UNIX: puzzlebox]" wedge ${USER}@offbyone.lan
+26
+27  NOTE: If successful, you should receive a copy of this e-mail.
+28 -------------------------------------------------------------------------
+29
+lab46:~/src/Projects/pbx0$ rm results
+rm: remove regular file 'results'? y
+lab46:~/src/Projects/pbx0$ ls
+data.file.0  data.file.1  data.file.2  start.html  temp
+lab46:~/src/Projects/pbx0$ touch results
+lab46:~/src/Projects/pbx0$ mv temp results
+mv: overwrite 'results'? y
+lab46:~/src/Projects/pbx0$ cat results
+1   -------------------------------------------------------------------------
+2   Congratulations! You unravelled the puzzle box!
+3
+4   To finish, you must perform these two additional steps, which take the
+5   form of command-lines. Please be sure to type them exactly as written!
+6
+7 In order to proceed, you must have named this unscrambled file "results",
+8 after which you can do the following two steps (NOTE you must do BOTH of
+9   these steps):
+10
+11
+12  -------------------------------------------------------------------------
+13 Action 1: Submit your files using the "submit" tool.
+14  --------  Just run the following to perform that action:
+15
+16    $ submit unix pbx0 results pbx0steps
+17
+18  NOTE: This assumes your "results" and "pbx0steps" files are in the
+19        current directory as you run the command.
+20
+21  -------------------------------------------------------------------------
+22 Action 2: Email this file's contents to your instructor as well as
+23  --------  yourself. To do that, run the following at the lab46 prompt:
+24
+25 $ cat results | mail -s "[UNIX: puzzlebox]" wedge ${USER}@offbyone.lan
+26
+27  NOTE: If successful, you should receive a copy of this e-mail.
+28 -------------------------------------------------------------------------
+29
+lab46:~/src/Projects/pbx0$ ls
+data.file.0  data.file.1  data.file.2  results  start.html
+lab46:~/src/Projects/pbx0$ touch pbx0steps
+lab46:~/src/Projects/pbx0$ ls
+data.file.0  data.file.1  data.file.2  pbx0steps  results  start.html
+lab46:~/src/Projects/pbx0$ pico pbx0steps
+lab46:~/src/Projects/pbx0$ submit unix pbx0 results pbx0steps
+lab46:~/src/Projects/pbx0$ cat results | mail -s "[UNIX: puzzlebox]" wedge ${USER}@offbyone.lan
+lab46:~/src/Projects/pbx0$ alpine

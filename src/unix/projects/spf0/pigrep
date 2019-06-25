@@ -1,0 +1,111 @@
+############################################################################################################
+#													   #
+#  Will was responsible for creating pigrep, and did not ask for any help regarding the creation of pigrep #
+#  whenever we met up for a team meeting/work session.  I do not know if that is because he had too little #
+#  time to complete it, but Jimeto and i had no hand in helping Will, as he volunteered to work on it from #
+#  the beginning, and didn't request help otherwise.  							   #
+#													   #
+#	-Joshua Ruskauff										   #
+#													   #
+############################################################################################################
+
+
+
+
+
+#!/bin/bash
+
+#In the state this script is in currently it will not run appropriately,
+#many of the commands our commented out for convience sake, but have been  tested to work. They just need a little fine tuning such as grabbing the   right file to be compared, that's the big issue, see line
+#79 to see where the potential logic is for the cli argument to grab the
+#file for comparison between the potential file names of pi.#######.out
+
+
+if [ -z $1 ]; then
+
+
+		echo "ERROR must specify PATTERN"
+
+		exit
+
+fi
+
+#this if statement generates our simple Error message when no arguments arepassed with pigrep
+
+
+
+
+if [ $1 = "help" ]; then
+		
+
+
+	echo "pigrep - search available pi digits via regex for matches;
+          must be part of pipeline (send PI digits in via STDIN)
+
+   usage: pigrep [OPTION...] PATTERN
+
+    note: if MAX variable is set, cap processing at that value
+
+ options:
+
+  atend - calculations are based on last digit of match
+ byline - output one value per line (default is space-separated)
+  drop3 - do not include leading 3 of pi (*3*14) in processing
+ offset - determine offsets of matches (from start of digits)
+   help - display this help and exit"
+   
+fi
+
+#This if statement assigns the cli argument variable of $1 to the string
+#"help" thus echoing out the help message above, when the help argument is typed in.
+
+#if [ $2 >= 1 ] || [ $2 < 2001 ]; then
+
+#this if statement grants us the 1-2000 pattern limit for our pattern to besearched via the various grep cli arguments below. 1-2000 is the project
+#specification.
+
+
+#grep -o $2 ~/src/unix/spf1/pi.out #byline option
+
+#this grep option produces the output with new lines. instead of a long
+#string like, 3.14234234234234 where it highlights in one messy line
+#this option does it line by line like..
+#34
+#34
+
+#fi
+			
+
+
+#if [ $3 = "atend" ]; then
+
+#grep -o | cut -c -1
+
+#This cli argument cuts the rest of the string/pattern  that was insterted (1-2000) so for example if you typed in 1793 to search for, it'd only show the "1"
+
+#if [ $4 = "offset" ]; then
+
+#grep -o | cut -c 4-
+
+#This cli argument does the opposite of atend, by only showing the last    number of the string/pattern provided
+#At least in theory.. it might need to be tweaked tbh.
+
+#if [ $5 = "byline" ]; then
+
+#see line 53 and 55 for the description of the #78 argument
+
+#if [ $6 = "drop3" ]; then
+
+	#cat pi.#.out | cut -c 3- pi.#.out
+
+#this $6 argument drops the first 3 aka "3.1" and cuts it out of the output
+#hence the 'drop 3' option
+
+#if [ $7 >= 2 ] || [ $7 < 1000001 ]
+
+#This prototype if statement will help choose the output file.
+#It's a very rough prototype, as in just generates the parameters possible for the output files		
+
+
+
+

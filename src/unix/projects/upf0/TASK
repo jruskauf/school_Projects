@@ -1,0 +1,55 @@
+task: 0
+result: 9
+numbers: ONLY(three(2), five, seven, nine)
+operations: ANY
+min_pipes: 2
+max_pipes: ANY
+
+task: 1
+result: 3
+numbers: ONLY(three(2), five, seven, nine)
+operations: ANY
+min_pipes: 2
+max_pipes: ANY
+
+task: 2
+result: 11
+numbers: ONLY(zero, one(1), two(1), three(3), five(2))
+operations: ANY, EXCEPT(plus)
+min_pipes: 3
+max_pipes: ANY
+
+task: 3
+result: 22
+numbers: ONLY(zero, one(1), two(2), three(3), five(2))
+operations: ANY, EXCEPT(plus)
+min_pipes: 3
+max_pipes: ANY
+
+task: 4
+result: -8
+numbers: ANY, EXCEPT(two, six, seven)
+operations: ANY, WITH_LIMITS(multby(1), plus(3)), EXCEPT(divideby)
+min_pipes: 4
+max_pipes: 4
+
+task: 5
+result: 7
+numbers: ANY, EXCEPT(two, six, seven)
+operations: ANY, WITH_LIMITS(multby(1), plus(3)), EXCEPT(divideby)
+min_pipes: 4
+max_pipes: 4
+
+task: 6
+result: -2
+numbers: ONLY(zero, three, six, seven, nine)
+operations: ANY, EXCEPT(abs, negify, negate)
+min_pipes: 5
+max_pipes: 12
+
+task: 7
+result: -1
+numbers: ONLY(seven(1), eight, nine)
+operations: ONLY(multby(1), plus(2), divideby(1), minus(1), sqrt, modulus, abs, negate)
+min_pipes: 5
+max_pipes: 16

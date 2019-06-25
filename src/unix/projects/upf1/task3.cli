@@ -1,0 +1,1 @@
+echo "762.00 in" | in2ft -d "" -p "3"| ft2hm -d "" -p "3" | hm2dcm -d " , " -p "3"

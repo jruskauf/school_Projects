@@ -1,0 +1,1 @@
+echo "17.30 mm" | mm2dm -d " -> " | dm2cm -d " -> "

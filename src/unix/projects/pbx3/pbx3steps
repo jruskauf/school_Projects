@@ -1,0 +1,45 @@
+#Set up variables and create the project directory, copy files, etc.  This is the same thing i did the last two times.
+
+PUBLIC="/var/public/spring2018/unix/pbx3/jruskauf"
+PRJDIR="${HOME}/src/unix/projects/pbx3
+
+mkdir -p ~/src/unix/projects/pbx3
+cp -a ${PUBLIC}/* ${PRJDIR}/
+
+cd ${PRJDIR}
+
+#Now we use file to determine the filetype, and it's a whole big messy thing.
+#Turns out though xzcat partially unscrambles it, so let's put that into a file.
+xzcat pbx3.cpp > pbx3
+
+#Check filetype again, and it turns out to be a tar archive.  So let's decompress that into stuff.
+tar -x -f pbx3
+
+#ooh boy, lots of files, and everything seems slightly better.
+#turns out datapart 1 and 3 are encoded, 2 is a gzip compression, and 4 is another
+#tar archive.  Let's fix these up a bit so they're actually readable, hopefully.
+
+uudecode datapart1
+zcat datapart2 > part2
+uudecode datapart3
+tar -x -f datapart4
+
+#ok, now datapart 1 and 3 are executable, but permissions don't allow me anything.
+#Let's change that with chmod, and for the other two parts they're quarter faces.
+#Why must we always piece together weird stuff like we're in a budget crime
+#thriller?  This is Unix, not CSI Miami.
+
+chmod 700 datapart1
+chmod 700 datapart3
+
+#now that everything is unscrambled, let's paste it all together, as well as
+#remove the last line of the file, as it is just a blank space.
+
+paste -z -d "" part* > rhalf
+paste -z -d "" datapart1 datapart3 > lhalf
+paste -d "" *half > pbx3.temp
+head -39 pbx3.temp > pbx3.results
+
+#check md5sum, everything seems a-ok.  Then all that is left to do is submit
+submit unix pbx3 pbx3.results pbx3steps
+

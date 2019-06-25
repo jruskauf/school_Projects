@@ -1,0 +1,1 @@
+echo "47.00000 st" | st2mi -T "ptolemaic" -d "" -p "5" | mi2yd -d "" -p "5" | yd2st -T "itinerary" -d " -=> " -p "5"

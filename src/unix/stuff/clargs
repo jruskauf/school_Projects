@@ -1,0 +1,14 @@
+#!/bin/bash3
+#
+# clargs - process command-line arguments
+#
+echo "My script name is: ${0}"
+echo "I was run with ${#} arguments"
+
+count=1
+for arg in ${*}; do
+	echo "arg #${count} is: ${arg}"
+	let count=count+1
+done
+
+exit 0

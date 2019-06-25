@@ -1,0 +1,52 @@
+#Set up project directory and copy over the zip file
+PUBLIC="/var/public/spring2018/unix/pbx2/jruskauf"
+PRJDIR="${HOME}/src/unix/projects/pbx2"
+
+mkdir -p ${PRJDIR}
+cp -a ${PUBLIC}/* ${PRJDIR}/
+
+cd ${PRJDIR}
+
+#We now use file on the pbx2.zip to determine its still a zip file, and now we
+#uncompress the file
+zcat pbx2.zip > pbx2
+rm -f README
+#README gets annoying, so better to delete it with every unzip
+
+#We cat pbx2, get confused, flail and scream for Jeff to help us, and then realize
+#that the password in the pbx2 file is meant to be used with unzip.
+unzip -P "fc3b9df6" pbx2.zip
+rm -f README
+
+#we got three files from this.  enigmatic.file, hex2ascii.c, and octal2ascii.c.
+#Lets decode the enigmatic.file while compressing the C programs.
+uudecode enigmatic.file
+gcc hex2ascii.c -o hex2ascii
+gcc octal2ascii.c -o octal2ascii
+
+#After you read the original .c files in cat, we know we can try and feed stage2
+#through them.  However, after changing the permissions on stage2, we find out 
+#that the values in stage 2 only work with hex2ascii.  With octal2ascii it will
+#not work, and you will have to terminate the program from another terminal to
+#regain control.
+chmod 700 stage2
+./hex2ascii < stage2
+
+#looks like we got a password out of it, so let's unzip again with it.
+unzip -P "b390a4b8" pbx2.zip
+rm -f README
+
+#It gave us 4 new files, parts 1-4.  They're scrambled ASCII art, with numbers
+#along the lefthand side as a guide.  Let's unscramble and put it back together
+#in a file.
+tac part1 > temp | mv -f temp part1
+head -1 part2 > line5
+tail -1 part2 > line1
+head -1 part3 > line7
+tail -1 part3 > line4
+head -1 part4 > line6
+tail -1 part4 > line0
+cat line0 line1 part1 line4 line5 line6 line7 > pbx2.results
+
+#now time to submit and continue on in our lives
+submit unix pbx2 pbx2.results pbx2steps

@@ -1,0 +1,1 @@
+echo "2601.00000 cu" | cu2mm -T "egyptian" -d "" -p "5" | mm2dm -d "" -p "5" | dm2cm -d "" -p "5" | cm2in -d "" -p "5" | in2ft -d "" -p "5" | ft2yd -d "" -p "5" | yd2st -T "egyptian" -d " -=> " -p "5"

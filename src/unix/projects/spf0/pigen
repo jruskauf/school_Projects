@@ -1,0 +1,79 @@
+############################################################################################################
+#													   #
+#  James and i both worked on pigen.  First we developed the structure of the program seperately, then     #
+#  we brough both our structures to the table.  We decided to use my structure before James tweaked the    #
+#  script to be a bit cleaner looking.  Then we began to flesh it out, again developing seperately to      #
+#  later collaborate.  We weren't able to solve the weird matching bug, but otherwise were able to have it #
+#  work correcly in accordance with instructions.							   #
+#													   #
+#	-Joshua Ruskauff										   #
+#													   #
+############################################################################################################
+
+
+
+
+
+#!/bin/bash -x
+#
+# unix
+# spf0
+# 
+# James Williams
+#
+# Joshua Ruskauff
+#
+#############
+# Variables #
+#############
+
+Pie=/usr/local/etc/pi.1000000				# the pi file
+
+###################
+# check for input #
+###################
+
+if [ -z $1 ]; then					# check for blank
+	echo "scale=100; 4*a(1)" | bc -lq > pi.100.out  # default 100 output
+	exit						# done
+
+elif  [ $1 -lt 1 ] || [ $1 -gt 2000 ]; then 	# check for out of bounds
+	echo "Input out of bounds (1-2000)"		# error message
+	exit						# kicks out
+
+eggs=$(echo "$1" | grep '^[0-9]\+$' | wc -l)		# checking if $1 is valid
+elif [ $eggs -eq 0 ]; then				# check for non-numbers
+	echo "Enter valid integers"			# error message
+	exit						# kicks out
+fi
+
+#################
+# Main function #
+#################
+
+if [ $1 -ge 1 ] && [ $1 -le 2000 ]; then		# check for in-bounds
+
+	echo "scale=$1; 4*a(1)" | bc -lq | rev | cut -c 2- | rev | tr '\n' ' ' | rev | cut -c 2- | rev >  pi.$1.out 
+
+	# getting pi, snipping off the end 						
+	milk=`mktemp pi.$1.XXX`				# making a temp file
+	
+	printf "3." > ${milk}				# placing the header
+	cat ${Pie} | head -c -$1 | cut -c 2-$1 >> ${milk} 
+							# putting actual pi in
+
+	#cat pi.$1.out
+	#cat ${milk}
+	diff -q pi.$1.out ${milk}
+	diff -s pi.$1.out ${milk}
+
+	if [ `diff pi.$1.out ${milk} | wc -w` == 0 ]; then
+		echo MATCH
+
+	else
+		echo MISMATCH
+	fi
+	
+	rm -rf ${milk}				# discarding the temp file
+fi
+

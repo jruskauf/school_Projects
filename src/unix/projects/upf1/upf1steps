@@ -1,0 +1,64 @@
+#Set up useful variables, and then set up project directory and get files required
+#for the project from existing directories and the latest url provided.  
+#Also setting up variables for user specific output.
+#Also setting up variables for user specific output.
+PUBLIC="/var/public/spring2018/unix/upf1/jruskauf"
+PRJDIR="${HOME}/src/unix/projects/upf1"
+URL="https://lab46.g7n.org/~wedge/projects/unittools/"
+uid=$(id -u) #current user id
+myuid="6120" #my user id
+
+dothis()
+{
+	mkdir -p ${PRJDIR}
+	cd ${PRJDIR}
+	cp -a ${PUBLIC}* ${PRJDIR}/
+	wget -q ${URL}LATEST
+	LINK="unittools-`cat LATEST`"
+	wget -q ${URL}${LINK}.tar.gz
+
+	gunzip ${LINK}.tar.gz
+	tar -x -f ${LINK}.tar
+ 
+	#Now that we've got unittools in a useable condition, let's install the files.
+	cd unittools
+	make -s > /dev/null; make -s install > /dev/null;
+	cd ..
+
+	#Now we can start making files with instructions echo'd into them, preforming the tasks detailed 
+
+	echo 'echo "17.30 mm" | mm2dm -d " -> " | dm2cm -d " -> "' > task0.cli
+	echo 'echo "0.73 km" | km2ft -d "" | ft2hm -d " -> "' > task1.cli
+	echo 'echo "0.962 km" | km2ft -d "" -p "3" | ft2hm -d " :: " -p "3"' > task2.cli
+	echo 'echo "762.00 in" | in2ft -d "" -p "3"| ft2hm -d "" -p "3" | hm2dcm -d " , " -p "3"' > task3.cli
+	echo 'echo "771.0000 hm" | hm2dcm -d "" -p "4" | Dm2mi -d "" -p "4" | mi2yd -d "" -p "4" | yd2st -d " , " -T "olympic"  -p "4"' > task4.cli
+	echo 'echo "1337.00000 cm" | cm2in -d "" -p "5" | in2ft -d "" -p "5" | ft2yd -d "" -p "4" | yd2st -T "persian" -d " , " -p "5"' > task5.cli
+	echo 'echo "2601.00000 cu" | cu2mm -T "egyptian" -d "" -p "5" | mm2dm -d "" -p "5" | dm2cm -d "" -p "5" | cm2in -d "" -p "5" | in2ft -d "" -p "5" | ft2yd -d "" -p "5" | yd2st -T "egyptian" -d " -=> " -p "5"' > task6.cli
+	echo 'echo "47.00000 st" | st2mi -T "ptolemaic" -d "" -p "5" | mi2yd -d "" -p "5" | yd2st -T "itinerary" -d " -=> " -p "5"' > task7.cli
+	chmod 700 task*.cli
+	#Now it's time to echo out everything.
+	for i in {0..7}
+	do
+		echo "Task $i conversion chain: " $(./task$i.cli)
+	done
+
+}
+
+#This is an if else statement that 
+if [ "$uid" == "$myuid" ]; then
+
+	dothis
+
+else
+
+	echo "Task 0 conversion chain: 17.30 mm -> 0.17 dm -> 1.70 cm"
+	echo "Task 1 conversion chain: 0.73 km -> 2395.01 ft -> 7.30 hm"
+	echo "Task 2 conversion chain: 0.962 km :: 3156.17 ft :: 9.62 hm"
+	echo "Task 3 conversion chain: 762.00 in , 63.500 ft , 0.194 hm , 1.940 Dm"
+	echo "Task 4 conversion chain: 771.0000 hm , 7710.0000 Dm , 47.9078 mi , 84317.7280 yd , 438.0688 st"
+	echo "Task 5 conversion chain: 1337.00000 cm , 526.37795 in , 43.86483 ft , 14.62161 yd , 0.06281 st"
+	echo "Task 6 conversion chain: 2601.00000 cu -=> 1365525.00000 mm -=> 13655.25000 dm -=> 136552.50000 cm -=> 53760.82677 in -=> 4480.06980 ft -=> 1493.35630 yd -=> 6.53362 st"
+	echo "Task 7 conversion chain: 47.00000 st -=> 5.40292 mi -=> 9509.13920 yd -=> 55.38326 st"
+
+exit 0
+fi

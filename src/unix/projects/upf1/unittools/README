@@ -1,0 +1,44 @@
+unittools - unit conversion suite of command-line tools
+=======================================================
+unittools is a collection of various unit conversion utilities that
+can be used for transitioning values in one unit to another. They
+provide a one-to-one mapping and are designed to work in command-
+line pipelines.
+
+How to compile
+==============
+Before you can use unittools, you first need to compile the source
+code. This has been simplified with the use of a Makefile. All you
+have to do (provided a capable C compiler is installed), is to type
+'make' at the command-line and the process should commence. You
+will see each tool be compiled, and hopefully in a successful
+fashion.
+
+How to install
+==============
+In order to make use of unittools for your endeavors, you will need
+to install them into some directory in your PATH. Your personal bin
+directory, located in the base of your home directory will do fine.
+
+To install unittools into your own bin directory, simply run:
+
+	make install
+
+at the prompt. Once done you should be all set. Try seeing if the
+tools are now available to you (try running 'cm2in' or any of the
+other tools- if it doesn't come back saying "No such file or
+directory", then the install was successful).
+
+If not you may want to try logging out and logging back in.
+
+How to use
+==========
+The various unittools, named for the units they convert from and 
+the units they convert to, expect input data via STDIN, and will
+output the converted value to STDOUT. This makes them quite handy
+in command-line pipelines.
+
+There are various arguments available for each tool, which can be
+used to alter the default behavior. Run the specific tool with the
+'-h' (without quotes) argument, and you will see its usage
+information.

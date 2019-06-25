@@ -1,0 +1,1 @@
+echo "1337.00000 cm" | cm2in -d "" -p "5" | in2ft -d "" -p "5" | ft2yd -d "" -p "4" | yd2st -T "persian" -d " , " -p "5"

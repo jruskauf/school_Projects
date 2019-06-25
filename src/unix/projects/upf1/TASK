@@ -1,0 +1,55 @@
+task: 0
+precision: 2
+input_value: 1730
+input_unit: mm
+output_unit: cm
+chain_delim: " -> "
+
+task: 1
+precision: 2
+input_value: 0.73
+input_unit: km
+output_unit: hm
+chain_delim: " -> "
+
+task: 2
+precision: 3
+input_value: 0.962
+input_unit: km
+output_unit: dm
+chain_delim: " :: "
+
+task: 3
+precision: 3
+input_value: 762
+input_unit: in
+output_unit: Dm
+chain_delim: " :: "
+
+task: 4
+precision: 4
+input_value: 771
+input_unit: hm
+output_unit: st (olympic)
+chain_delim: ","
+
+task: 5
+precision: 4
+input_value: 1337
+input_unit: cm
+output_unit: st (persian)
+chain_delim: ","
+
+task: 6
+precision: 5
+input_value: 2601
+input_unit: cu (egyptian)
+output_unit: st (egyptian)
+chain_delim: " -=> "
+
+task: 7
+precision: 5
+input_value: 47
+input_unit: st (ptolemaic)
+output_unit: st (itinerary)
+chain_delim: " -=> "

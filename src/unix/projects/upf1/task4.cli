@@ -1,0 +1,1 @@
+echo "771.0000 hm" | hm2dcm -d "" -p "4" | Dm2mi -d "" -p "4" | mi2yd -d "" -p "4" | yd2st -d " , " -T "olympic"  -p "4"

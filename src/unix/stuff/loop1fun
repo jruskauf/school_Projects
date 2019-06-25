@@ -1,0 +1,29 @@
+#!/bin/bash
+#
+#loop0fun: a for loop adventure
+#
+echo -n "Enter starting value (0-9) [0]: "
+read value
+
+if [ -z "${value}" ]; then
+	value = 0
+fi
+
+echo -n "enter ending value (0-20) [9]: "
+read endval
+if [ -z "${endval}" ]; then
+	endval=9
+fi
+
+if [ "${value}" -gt "${endval}" ]; then
+	echo "ERROR: starting value (${value}) must be smaller than ending value (${endval})"
+	exit 1
+fi
+
+for ((start=${value}; start <= ${endval}; start++)); do
+	echo -n "="
+	let value=value+1
+done
+echo
+
+exit 0

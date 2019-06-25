@@ -1,0 +1,8 @@
+#include /bin/bash
+cat /usr/share/dict/words | wc -l
+#cat /usr/share/dict/words | egrep "^pre"\|"^post" | egrep -ve "ing$" | wc -l
+cat /usr/share/dict/words | egrep  -e "^.(..)+$" | egrep -vie "^(..)*(.[aeiouy])+" | wc -l
+#cat /usr/share/dict/words | egrep -vie "a+" | wc -l
+#cat /usr/share/dict/words | egrep -vie "j+"\|"l+"\|"r+" | wc -l
+
+exit
