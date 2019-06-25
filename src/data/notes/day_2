@@ -1,0 +1,31 @@
+integer
+floating point
+memory aka pointer
+
+signed char x =0;
+
+0+ 0 | 0 0 0 1 1 0 1
+---------------------
+1-   |
+     |  2^8=256   
+     |
+     | -128 => +127
+
+[13]
+X
+0xdeadbeef
+
+	[0xdeadbeef]
+	y
+	0xcoffee
+		
+		[0xcoffee]
+		z
+		0xc05fefe
+
+signed char *y = null;
+y=&x;
+x=7;
+*y=13;
+signed char **z=null;
+z=&y;

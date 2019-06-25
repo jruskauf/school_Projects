@@ -1,0 +1,153 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+//Handles insertion of values before a certain element in the array
+int insert (int value, int count, int array[]);
+int append (int value, int count, int array[]);
+int obtain (int value, int count);
+void display(int count, int array[]);
+
+
+void menu ();
+
+int main ()
+{
+	//Setting up variables for use
+	int input;
+	int value;
+	int count;
+	int array[20];
+	int check;
+	//int iter;
+	do{
+		menu();
+		scanf("%d", &input);
+		
+		if (input == 0){
+		
+			//printf("\nBuild List\n");	
+			count=-1;
+			do{	
+				value = 0;
+				fprintf(stderr, "enter value (-1 to finish): ");
+				fscanf(stdin, "%d", &value);
+				check = append(value, count, array);
+				count++;
+			}while(value != -1);
+	
+		}else if (input == 1){
+			//printf("\nForward\n");	
+			if (check <= -1){
+				fprintf(stderr, "Error!  No List!");
+			} else if (check > -1){
+				count=0;
+				do{
+					if (count > 0 && count <= check+1){
+						fprintf(stdout, " -> ");
+					}
+					display(count, array);
+					count++;	
+				}while(array[count] >= -1 && count <= check+1);
+			}
+			printf("\n");
+
+		}else if (input == 2){
+	
+			//printf("\nBackward\n");
+			if (check <= -1){
+				fprintf(stderr, "Error!  No List!");
+			} else if (check > -1){
+				count=check+1;
+				do{
+					if (count >=0 && count <= check){
+						fprintf(stdout, " -> ");
+					}
+					display(count, array);
+					count--;	
+				}while(array[count] >= -1 && count >= 0);
+			}
+			printf("\n");
+
+		}else if (input == 3){
+	
+			printf("\nInsert\n");
+			
+			fprintf(stderr, "Enter index to insert before: ");
+			fscanf(stdin, "%d", &count);
+			fprintf(stderr, "Enter value to insert into list: ");
+			fscanf(stdin, "%d", &value);
+			insert(value, count, array);
+			check++;
+	
+		}else if (input == 4){
+
+			printf("\nAppend\n");
+
+			fprintf(stderr, "Enter index to append after: ");
+			fscanf(stdin, "%d", &count);
+			fprintf(stderr, "Enter value to append into list: ");
+			fscanf(stdin, "%d", &value);
+			append(value, count, array);
+			check++;
+
+		
+		}else if (input == 5){
+	
+			printf("\nObtain\n");
+	
+		}else if (input == 6){
+	
+			printf("\nClear\n");
+		}
+
+	}while(input < 7);
+	return(0);
+}
+
+void menu(){
+	fprintf(stderr, "\n===ael0===\n");
+	fprintf(stderr, "0. build list\n");
+	fprintf(stderr, "1. display list forward\n");
+	fprintf(stderr, "2. display list backward\n");
+	fprintf(stderr, "3. insert into list\n");
+	fprintf(stderr, "4. append into list\n");
+	fprintf(stderr, "5. obtain from list\n");
+	fprintf(stderr, "6. clear list\n");
+	fprintf(stderr, "7. quit\n");
+	fprintf(stderr, ">>> ");
+}
+
+int append (int value, int count, int array[]){
+	if (count <= 0){
+		count=0;
+		array[count]=count;
+		array[count+1]=-1;
+	}else{
+		int iter;
+		for (iter=19; iter > count; iter--){
+			array[iter]=array[iter+1];
+		}
+	}	
+	array[count+1]=value;
+	return(count);
+}
+
+int insert (int value, int count, int array[]){
+	if (count <= 0){	
+		count=1;
+		array[count-1]=count;
+		array[count]=-1;
+	}else{
+		int iter;
+		for (iter=20; iter > count; iter--){
+			array[iter-1]=array[iter];
+		}
+	}	
+	array[count-1]=value;
+	return(count);
+}
+
+
+void display (int count, int array[]){
+	fprintf(stdout, "[%d] %d", count, array[count]);
+}
