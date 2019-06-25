@@ -1,0 +1,15 @@
+syntax: glob
+
+*.tmp
+*.bak
+*.swp
+*.pyc
+*.o
+*.a
+*.core
+*~
+*.db
+*.class
+*.gz
+bin/*
+lib/*
