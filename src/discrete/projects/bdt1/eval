@@ -1,0 +1,129 @@
+#!/bin/bash
+##
+## eval - output and functionality compliance script
+##
+## usage: eval [summary] [nothrottle] [nocolor]
+##
+######################################################################
+
+######################################################################
+##
+## Declare variables
+##
+RELEASE="20180925-1029"
+DESIG="discrete"
+PROJECT="bdt1"
+SEMESTER=$(cat /usr/local/etc/semester)
+PUBLICDIR="/var/public/${SEMESTER}/${DESIG}"
+PROJECTDIR="${PUBLICDIR}/${PROJECT}"
+DATADIR="${PROJECTDIR}/in"
+SUMMARY=$(echo  ${*} | grep -qio 'summary'    && echo "true"  || echo "false")
+SAMPLEFILE="sample2.txt"
+SCORE=0
+TOTAL=0
+LINE1="==================================="
+LINE2="---------------------------------------------------"
+LINE3="----------------------------------------------------------------------"
+
+######################################################################
+##
+## Heading
+##
+if [ "${SUMMARY}" = "false" ]; then
+	echo   "${LINE1}"
+	printf "= %13s Evaluation Script =\n" "${DESIG}/${PROJECT}"
+	echo   "${LINE1}"
+fi
+
+######################################################################
+##
+## Make sure data file exists (check PROJECT files first)
+##
+if [ -r "${DATADIR}/${SAMPLEFILE}" ]; then
+
+	echo -n
+
+######################################################################
+##
+## Make sure data file exists (check local copy next)
+##
+elif [ -r "in/${SAMPLEFILE}" ]; then
+
+	DATADIR="in"
+
+######################################################################
+##
+## Bail out if not found
+##
+else
+	echo "ERROR: Cannot access in/${SAMPLEFILE}"
+	exit 1
+fi
+
+######################################################################
+##
+## Part 0: Ensure basic functionality (compare raw results of 
+##         xxd versus your implementation)
+##
+if [ "${SUMMARY}" = "false" ]; then
+	clear
+	echo "[Part 0]: Output compliance ..."
+fi
+
+NUM=0
+count=1
+rm -f out/phase${NUM}.*.chk
+for file in audio data filename sample; do
+
+	clear
+	PFILE="out/phase${NUM}.${file}.chk"
+	echo
+	printf -- "----[ %11s ]${LINE2}\n" "${file}"
+
+	DATAFILE=${DATADIR}/${file}
+	CCNT=$(./${PROJECT} ${DATAFILE}1.* ${DATAFILE}2.* | sed 's/\x1b\[[0-9][0-9]m//g' | sed 's/\x1b\[0m//g' | wc -c)
+	cCNT=$(cat ${PROJECTDIR}/.OUT${count} | wc -c)
+	LCNT=$(./${PROJECT} ${DATAFILE}1.* ${DATAFILE}2.* | sed 's/\x1b\[[0-9][0-9]m//g' | sed 's/\x1b\[0m//g' | wc -l)
+	lCNT=$(cat ${PROJECTDIR}/.OUT${count} | wc -l)
+	MD5S=$(./${PROJECT} ${DATAFILE}1.* ${DATAFILE}2.* | sed 's/\x1b\[[0-9][0-9]m//g' | sed 's/\x1b\[0m//g' | md5sum | cut -d' ' -f1)
+	mD5S=$(cat ${PROJECTDIR}/.OUT${count} | md5sum    | cut -d' ' -f1)
+	./${PROJECT} ${DATAFILE}1.* ${DATAFILE}2.*
+	echo   "chars:${CCNT}"                             >> ${PFILE}
+	echo   "chars:${cCNT}"                             >> ${PFILE}
+	echo   "lines:${LCNT}"                             >> ${PFILE}
+	echo   "lines:${lCNT}"                             >> ${PFILE}
+	echo   "md5sum:${MD5S}"                            >> ${PFILE}
+	echo   "md5sum:${mD5S}"                            >> ${PFILE}
+	printf "%4s: %7d char, %5d lines, md5: %s\n" "$(echo ${PROJECT} | sed 's/^.*\///')" "${CCNT}" "${LCNT}" "${MD5S}"
+
+	echo "${LINE3}"
+	cat ${PFILE}                | sort            | uniq   >  ${PFILE}.results
+	CCNT=$(cat ${PFILE}.results | grep '^chars:'  | wc -l)
+	LCNT=$(cat ${PFILE}.results | grep '^lines:'  | wc -l)
+	MCNT=$(cat ${PFILE}.results | grep '^md5sum:' | wc -l)
+	echo -n " CHK:     "
+	for chk in ${CCNT} ${LCNT} ${MCNT}; do
+		if [ "${CCNT}" -eq 1 ]; then
+			let SCORE=SCORE+1
+			printf "%8s     " "OK"
+		else
+			printf "%8s     " "MISMATCH"
+		fi
+		let TOTAL=TOTAL+1
+	done
+	if [ "${SUMMARY}" = "false" ]; then
+		echo -n "Press ENTER to continue"
+		read enter
+	fi
+
+	echo
+	echo "${LINE3}"
+	let count=count+1
+done
+
+if [ "${SUMMARY}" = "false" ]; then
+	echo -n "Tally: ${SCORE}/${TOTAL} | Press ENTER to continue"
+	read enter
+fi
+
+exit 0

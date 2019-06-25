@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+int main (int argc, char *argv[]){
+
+    int qty   = 0;
+    int Nary = 0;
+    int LowB  = 0;
+    int HighB = 0;
+    int mode  = 0;
+
+    if(argc < 3){
+	fprintf(stderr, "ERROR! Invalid number of arguments!\n");
+	exit (1);
+    }
+
+    if (atoi(argv[1]) > 0 || argc > 4){
+	qty = atoi(argv[1]);
+    } else {
+	fprintf(stderr, "ERROR! Invalid qty!\n");
+	exit (2);
+    }
+
+    if (atoi(argv[2]) < 1){
+	fprintf(stderr, "ERROR! Invalid N-ary!\n");
+	exit(3);
+    }
+    
+    if(argc > 3){
+	if (argc > 4){
+            if(atoi(argv[3]) > atoi(argv[4]) && atoi(argv[4]) != 0){
+ 		fprintf(stderr, "ERROR! Invalid Lower Bound!\n");
+	    exit(4);
+
+	        if(argc > 5){
+    		    if(atoi(argv[4]) > 0){
+			mode = 1;
+    		    }
+	        }
+	    }
+	}
+    }
+
+
+
+
+
+    return(0);
+}

@@ -1,0 +1,59 @@
+decode.c: In function ‘main’:
+decode.c:94:5: warning: statement with no effect [-Wunused-value]
+     for(iter; iter > 0; iter--){
+     ^~~
+decode.c:130:2: warning: statement with no effect [-Wunused-value]
+  for (iter; iter > 0; iter--){
+  ^~~
+decode.c:139:43: warning: format ‘%d’ expects argument of type ‘int’, but argument 3 has type ‘size_t’ {aka ‘long unsigned int’} [-Wformat=]
+     fprintf(stdout, " input name length: %d bytes\n", strlen(basename));
+                                          ~^           ~~~~~~~~~~~~~~~~
+                                          %ld
+decode.c:141:43: warning: format ‘%d’ expects argument of type ‘int’, but argument 3 has type ‘size_t’ {aka ‘long unsigned int’} [-Wformat=]
+     fprintf(stdout, "output name length: %d bytes\n", strlen(filename));
+                                          ~^           ~~~~~~~~~~~~~~~~
+                                          %ld
+decode.c:149:52: warning: unknown conversion type character ‘\x0a’ in format [-Wformat=]
+         fprintf(stdout, "  compression rate: %.2f %\n", comprate);
+                                                    ^~
+decode.c:152:45: warning: unknown conversion type character ‘\x0a’ in format [-Wformat=]
+  fprintf(stdout, "    inflation rate: %.2f %\n", comprate);
+                                             ^~
+decode.c:26:13: warning: unused variable ‘stride’ [-Wunused-variable]
+     int     stride  =  1;
+             ^~~~~~
+decode.c:25:13: warning: unused variable ‘RLEspec’ [-Wunused-variable]
+     int     RLEspec =  1;
+             ^~~~~~~
+decode.c:23:14: warning: unused variable ‘gtally’ [-Wunused-variable]
+     int      gtally =  0;
+              ^~~~~~
+decode.c:21:16: warning: unused variable ‘test’ [-Wunused-variable]
+     char       test =  0;
+                ^~~~
+decode.c:17:11: warning: unused variable ‘reserved’ [-Wunused-variable]
+     char *reserved       = NULL;
+           ^~~~~~~~
+encode.c: In function ‘main’:
+encode.c:74:28: warning: format ‘%c’ expects argument of type ‘int’, but argument 3 has type ‘char *’ [-Wformat=]
+     fprintf(out, "dcfX RLE%c%c%c", control, RLEspec, stride);
+                           ~^       ~~~~~~~
+                           %s
+encode.c:76:20: warning: format ‘%c’ expects argument of type ‘int’, but argument 3 has type ‘size_t’ {aka ‘long unsigned int’} [-Wformat=]
+     fprintf(out, "%c", strlen(basename));
+                   ~^   ~~~~~~~~~~~~~~~~
+                   %ld
+encode.c:133:43: warning: format ‘%d’ expects argument of type ‘int’, but argument 3 has type ‘size_t’ {aka ‘long unsigned int’} [-Wformat=]
+     fprintf(stdout, " input name length: %d bytes\n", strlen(basename));
+                                          ~^           ~~~~~~~~~~~~~~~~
+                                          %ld
+encode.c:135:43: warning: format ‘%d’ expects argument of type ‘int’, but argument 3 has type ‘size_t’ {aka ‘long unsigned int’} [-Wformat=]
+     fprintf(stdout, "output name length: %d bytes\n", strlen(filename));
+                                          ~^           ~~~~~~~~~~~~~~~~
+                                          %ld
+encode.c:142:52: warning: unknown conversion type character ‘\x0a’ in format [-Wformat=]
+         fprintf(stdout, "  compression rate: %.2f %\n", comprate);
+                                                    ^~
+encode.c:145:45: warning: unknown conversion type character ‘\x0a’ in format [-Wformat=]
+  fprintf(stdout, "    inflation rate: %.2f %\n", comprate);
+                                             ^~

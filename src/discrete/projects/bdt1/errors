@@ -1,0 +1,14 @@
+bdt1.c: In function ‘main’:
+bdt1.c:51:6: warning: unused variable ‘doublecheck’ [-Wunused-variable]
+  int doublecheck;
+      ^~~~~~~~~~~
+bdt1.c: In function ‘display’:
+bdt1.c:165:16: warning: unused variable ‘color’ [-Wunused-variable]
+  char          color;
+                ^~~~~
+bdt1.c:164:13: warning: unused variable ‘compare2’ [-Wunused-variable]
+  char       compare2;
+             ^~~~~~~~
+bdt1.c:163:13: warning: unused variable ‘compare1’ [-Wunused-variable]
+  char       compare1;
+             ^~~~~~~~
